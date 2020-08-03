@@ -35,8 +35,6 @@ async function getUserInfo(userId) {
 }
 
 const sendConfirmation = (userId, view, channelid, origuserid) => {
-  console.log(userId)
-  console.log(origuserid)
   let values = view.state.values;
   Promise.all([getUserInfo(userId), getUserInfo(origuserid)]).then(users => {
     let blocks = [
