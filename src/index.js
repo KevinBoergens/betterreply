@@ -55,12 +55,14 @@ app.post('/actions', (req, res) => {
     channelid = payload.channel.id
     origuserid = payload.message.user
     // Open a modal with the selected message pre-populated
+    console.log('58')
     openModal(payload).then((result) => {
       if(result.data.error) {
         console.log(result.data);
         res.sendStatus(500);
       } else {
         res.sendStatus(200);
+        console.log('status 200 sent')
       }
     }).catch((err) => {
       res.sendStatus(500);
@@ -116,7 +118,7 @@ const openModal = async(payload) => {
     })
   };
   
-  
+  console.log('prepost')
   await axios.post(`${apiUrl}/views.open`, qs.stringify(viewData));
   
   //console.log(result.data);

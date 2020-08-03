@@ -35,6 +35,8 @@ async function getUserInfo(userId) {
 }
 
 const sendConfirmation = (userId, view, channelid, origuserid) => {
+  console.log(userId)
+  console.log(origuserid)
   let values = view.state.values;
   Promise.all([getUserInfo(userId), getUserInfo(origuserid)]).then(users => {
     let blocks = [
@@ -65,7 +67,8 @@ const sendConfirmation = (userId, view, channelid, origuserid) => {
       channel: channelid,
       blocks: JSON.stringify(blocks),
       username: users[0].username,
-      icon_url: users[0].image_original
+      icon_url: users[0].image_original,
+      as_user: true
     };
     axios
       .post(`${apiUrl}/chat.postMessage`, qs.stringify(message))
