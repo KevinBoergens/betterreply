@@ -13,7 +13,7 @@ const qs = require('qs');
 const signature = require('./verifySignature');
 const confirmation = require('./confirmation');
 const app = express();
-
+const dotenv = require('dotenv');
 const apiUrl = 'https://slack.com/api';
 
 /*
@@ -120,7 +120,7 @@ const openModal = async(payload) => {
   
   //console.log(result.data);
 };
-
+dotenv.config();
 const server = app.listen(process.env.PORT || 5000, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
